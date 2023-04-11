@@ -1,14 +1,17 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-      "jasmine"
-    ]
+      "node",
+      "reflect-metadata",
+      "jest"
+    ],
+    "resolveJsonModule": true
   },
   "files": [
     "src/test.ts",
+    "setup-jest.ts",
     "src/polyfills.ts"
   ],
   "include": [

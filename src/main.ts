@@ -1,20 +1,28 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { RouteReuseStrategy, provideRouter } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import { configuration } from './configuration/configuration';
+import { hmrBootstrap } from './hmr';
+import 'reflect-metadata';
+import 'hammerjs';
+import * as dayjs from 'dayjs';
 
-import { routes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
-import { environment } from './environments/environment';
+window.dayjs = dayjs;
+window.dayjs.extend(require('dayjs/plugin/duration'));
 
-if (environment.production) {
+if (configuration.production) {
   enableProdMode();
 }
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    importProvidersFrom(IonicModule.forRoot({})),
-    provideRouter(routes),
-  ],
-});
+const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
+
+if (configuration.hmr) {
+  if (module['hot']) {
+    hmrBootstrap(module, bootstrap);
+  } else {
+    console.error('HMR is not enabled for webpack-dev-server!');
+    console.log('Are you using the --hmr flag for ng serve?');
+  }
+} else {
+  bootstrap().catch(err => console.log(err));
+}

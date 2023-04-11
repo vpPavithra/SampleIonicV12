@@ -10,6 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "ionic-build": "ng build --source-map --configuration=$npm_config_angular_configuration && cordova build android",
     "ionic-build:debug": "ng build --eval--source-map --configuration=$npm_config_angular_configuration && cordova build android --debug --buildConfig ./buildConfig/build.json",
     "ionic-build:prod": "ionic cordova build android --eval--source-map --configuration=$npm_config_angular_configuration --configuration production --release --buildConfig ./buildConfig/build.json",
@@ -25,7 +26,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@ionic/angular": "^5.9.4",
-    "cordova-android": "10.1.2",
+    "dayjs": "1.9.8",
+    "hammerjs": "^2.0.8",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -36,11 +38,29 @@
     "@angular/compiler": "~12.2.0",
     "@angular/compiler-cli": "~12.2.0",
     "@angular/language-service": "^12.2.0",
-    "@ionic/angular-toolkit": "^3.1.0",
-    "@types/jasmine": "~3.8.0",
-    "@types/node": "^12.11.1",
+    "@angularclass/hmr": "^3.0.0",
+    "@ionic/angular-toolkit": "5.0.3",
+    "@types/node": "^12.20.55",
+    "cordova-android": "^10.1.2",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^5.0.0",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
     "ts-node": "~8.3.0",
-    "typescript": "~4.3.5"
+    "typescript": "4.2.4"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
 }
