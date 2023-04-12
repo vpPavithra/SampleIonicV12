@@ -18,6 +18,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-builders/custom-webpack": "^12.1.3",
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
     "@angular/core": "~12.2.0",
@@ -25,7 +26,16 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/plugin-transform-typescript": "^7.13.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-typescript": "^7.14.5",
     "@ionic/angular": "^5.9.4",
+    "babel-loader": "^8.2.2",
     "dayjs": "1.9.8",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.6.0",
@@ -33,7 +43,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.18",
+    "@angular-devkit/build-angular": "^12.2.17",
     "@angular/cli": "~12.2.18",
     "@angular/compiler": "~12.2.0",
     "@angular/compiler-cli": "~12.2.0",
@@ -49,6 +59,12 @@
     "cordova-plugin-statusbar": "^2.4.2",
     "ts-node": "~8.3.0",
     "typescript": "4.2.4"
+  },
+  "config": {
+    "ionic_source_map_type": "inline-source-map",
+    "ionic_webpack": "./config/webpack.config.ts",
+    "ionic_sass": "./config/sass.config.js",
+    "ionic_enable_lint": false
   },
   "description": "An Ionic project",
   "cordova": {
